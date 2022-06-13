@@ -13,6 +13,7 @@
         <module>start</module>
         <module>web</module>
         <module>rpc-api</module>
+        <module>persistence</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -20,6 +21,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <spring-boot.version>2.7.0</spring-boot.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <bcprov-jdk15on.version>1.70</bcprov-jdk15on.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -52,7 +55,24 @@
                 <artifactId>rpc-api</artifactId>
                 <version>${version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.kaisu.refactor</groupId>
+                <artifactId>persistence</artifactId>
+                <version>${version}</version>
+            </dependency>
             <!--module version management end-->
+            <!--vulnerability dependency replace begin-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${bcprov-jdk15on.version}</version>
+            </dependency>
+            <!--vulnerability dependency replace end-->
         </dependencies>
     </dependencyManagement>
 </project>

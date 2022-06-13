@@ -1,2 +1,13 @@
 server:
   port: 8888
+spring:
+  jpa:
+    open-in-view: false
+  application:
+    name: feign
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/feign
+    username: root
+    password: 123456

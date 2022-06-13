@@ -16,6 +16,10 @@
     <dependencies>
         <dependency>
             <groupId>com.kaisu.refactor</groupId>
+            <artifactId>persistence</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kaisu.refactor</groupId>
             <artifactId>rpc-api</artifactId>
         </dependency>
     </dependencies>
