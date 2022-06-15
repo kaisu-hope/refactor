@@ -1,7 +1,7 @@
 create table "user"
 (
     id          serial primary key,
-    user_id     text        not null,
+    user_id     varchar     not null,
     create_time timestamptz not null default current_timestamp,
     update_time timestamptz not null default current_timestamp
 );
