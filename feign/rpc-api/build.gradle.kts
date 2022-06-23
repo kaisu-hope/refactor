@@ -1,4 +1,5 @@
 dependencies {
+    api(project(":domain"))
     api("org.springframework.cloud:spring-cloud-starter-openfeign") {
         configurations.all {
             resolutionStrategy {

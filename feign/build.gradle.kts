@@ -20,6 +20,8 @@ subprojects {
     ext {
         set("testcontainersVersion", "1.17.2")
         set("springCloudVersion", "2021.0.3")
+        set("hutoolVersion", "5.8.3")
+        set("mapstructVersion","1.5.2.Final")
         java {
             toolchain {
                 languageVersion.set(JavaLanguageVersion.of(17))
@@ -31,8 +33,11 @@ subprojects {
                 mavenBom("org.springframework.cloud:spring-cloud-dependencies:${ext.get("springCloudVersion")}")
             }
             dependencies {
+                dependency("org.mapstruct:mapstruct-processor:${ext.get("mapstructVersion")}")
+                dependency("cn.hutool:hutool-core:${ext.get("hutoolVersion")}")
                 dependency("org.testcontainers:testcontainers:${ext.get("testcontainersVersion")}")
                 dependency("org.testcontainers:postgresql:${ext.get("testcontainersVersion")}")
+                dependency("org.mapstruct:mapstruct:${ext.get("mapstructVersion")}")
             }
         }
     }

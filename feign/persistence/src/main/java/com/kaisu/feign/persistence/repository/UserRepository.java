@@ -1,13 +1,16 @@
 package com.kaisu.feign.persistence.repository;
 
-import com.kaisu.feign.persistence.UserDO;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.kaisu.feign.domain.User;
 
 /**
  * @author kaisu
  */
-@Repository
-public interface UserRepository extends JpaRepository<UserDO, String> {
-
+public interface UserRepository {
+    /**
+     * 根据用户id 获取用户
+     *
+     * @param userId 用户id
+     * @return 用户
+     */
+    User findUserById(String userId);
 }

@@ -1,16 +1,18 @@
 package com.kaisu.feign.repository;
 
-import com.kaisu.feign.core.DatabaseTestConfiguration;
 import com.kaisu.feign.persistence.UserDO;
-import com.kaisu.feign.persistence.repository.UserRepository;
+import com.kaisu.feign.persistence.repository.UserDAO;
+import com.kaisu.feign.core.DatabaseTestConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
 
 /**
@@ -19,13 +21,17 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @DataJpaTest
 @Import(DatabaseTestConfiguration.class)
 @AutoConfigureTestDatabase(replace = NONE)
-public class TestUserRepository {
+public class TestUserDAO {
     @Autowired
-    private UserRepository userRepository;
+    private UserDAO userDAO;
 
     @Test
     void test_db_connection() {
-        userRepository.save(UserDO.builder().id("1").userId("1").createTime(LocalDateTime.now()).updateTime(LocalDateTime.now()).build());
-        System.out.println(userRepository.findAll());
+        var userDO = new UserDO();
+        userDO.setUserId("1");
+        userDO.setCreateTime(OffsetDateTime.now());
+        userDO.setUpdateTime(OffsetDateTime.now());
+        userDO = userDAO.save(userDO);
+        assertThat(userDO.getUserId(), is("1"));
     }
 }
